@@ -9,7 +9,13 @@ import { withKnobs, text, color, number } from "@storybook/addon-knobs";
 export default {
   title: "Map",
   component: GoogleMap,
-  decorators: [withKnobs]
+  decorators: [withKnobs],
+  parameters: {
+    backgrounds: [
+      { name: 'twitter', value: '#00aced', default: true },
+      { name: 'facebook', value: '#3b5998' },
+    ]
+  }
 };
 
 export const Map = () => (
@@ -42,6 +48,7 @@ const value2 = color('Color', defaultValue2, 'GROUP-ID2');
         lat="-17.942100"
         lng="177.742345"
         color={`${value1}`}
+        disabled="true"
       />
       <CustomMarker
         id="0"
@@ -49,6 +56,7 @@ const value2 = color('Color', defaultValue2, 'GROUP-ID2');
         lat="-17.842100"
         lng="178.142345"
         color={`${value2}`}
+        disabled="false"
       />
     </GoogleMap>
   </div>
