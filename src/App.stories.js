@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-
+import { action } from '@storybook/addon-actions';
 import GoogleMap, { infoWindow } from "google-map-react";
 import CustomMarker from "./components/CustomMarker";
 import { withKnobs, text, color, number } from "@storybook/addon-knobs";
@@ -41,6 +41,7 @@ const value2 = color('Color', defaultValue2, 'GROUP-ID2');
       bootstrapURLKeys={{ key: "AIzaSyBrB8u2TKZwnDzmUP8sIHaOvvPzr8G5nNk" }}
       defaultCenter={{ lat: -17.8181, lng: 177.952345 }}
       defaultZoom={10}
+      onClick={action("map-clicked")}
     >
       <CustomMarker
         id="-1"
@@ -49,6 +50,7 @@ const value2 = color('Color', defaultValue2, 'GROUP-ID2');
         lng="177.742345"
         color={`${value1}`}
         disabled="true"
+        onClick={action("marker1-clicked")}
       />
       <CustomMarker
         id="0"
@@ -57,6 +59,7 @@ const value2 = color('Color', defaultValue2, 'GROUP-ID2');
         lng="178.142345"
         color={`${value2}`}
         disabled="false"
+        onClick={action("marker2-clicked")}
       />
     </GoogleMap>
   </div>
