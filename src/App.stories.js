@@ -4,21 +4,46 @@ import { action } from '@storybook/addon-actions';
 import GoogleMap, { infoWindow } from "google-map-react";
 import CustomMarker from "./components/CustomMarker";
 import { withKnobs, text, color, number } from "@storybook/addon-knobs";
+import { addParameters } from '@storybook/react';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { addDecorator } from '@storybook/react';
+import { withConsole } from '@storybook/addon-console';
+import { withA11y } from '@storybook/addon-a11y';
+
+
 
 
 export default {
   title: "Map",
   component: GoogleMap,
-  decorators: [withKnobs],
+  decorators: [withA11y, withKnobs],
   parameters: {
     backgrounds: [
       { name: 'twitter', value: '#00aced', default: true },
       { name: 'facebook', value: '#3b5998' },
-    ]
+    ],
+    a11y: {
+      // optional selector which element to inspect
+      element: '#root',
+      // axe-core configurationOptions (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#parameters-1)
+      config: {},
+      // axe-core optionsParameter (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
+      options: {},
+    },
   }
 };
 
+addParameters({
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+  },
+});
+
+
+
 export const Map = () => (
+  
+
   
   <div style={{ height: "100vh", width: "100%" }}>
     <GoogleMap

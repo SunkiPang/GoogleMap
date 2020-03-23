@@ -7,5 +7,7 @@ module.exports = {
     '@storybook/addon-docs',
     '@storybook/addon-storysource',
     '@storybook/addon-actions/register',
+    '@storybook/addon-viewport/register',
+    '@storybook/addon-a11y/register',
   ]
 };
